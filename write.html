@@ -1,0 +1,131 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>오늘의 기록 · Quiet Log</title>
+  <meta name="description" content="Quiet Log 오늘의 기록 창. 감정을 안전하게 적고 저장할 수 있는 전용 기록 공간입니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-orbit"></div>
+  <header class="site-header">
+    <div class="brand">
+      <a class="logo" href="index.html">Quiet Log</a>
+      <div class="tag">오늘의 기록 창</div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">홈</a>
+      <a href="#write">오늘의 기록</a>
+      <a href="entries.html">저장된 기록</a>
+      <a href="about.html">소개</a>
+      <a href="privacy.html">정책</a>
+      <a href="contact.html">문의</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">조용히 기록하기</p>
+        <h1>오늘의 마음을<br />부담 없이 적어보세요</h1>
+        <p class="subtitle">
+          이 창은 기록을 쓰기 위한 전용 공간입니다.
+          쓰고 저장하면 메인 화면의 “저장된 기록”에서 확인할 수 있어요.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="entries.html">저장된 기록</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="card-title">오늘의 작은 체크인</div>
+        <ul>
+          <li>짧은 단어만 적어도 충분해요.</li>
+          <li>느낌을 숫자로만 표시해도 괜찮아요.</li>
+          <li>필요하면 숨김 모드를 켜세요.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="write" class="section">
+      <div class="section-head">
+        <h2>오늘의 기록</h2>
+        <p>간단하게 적어도 충분합니다. 오늘의 리듬을 남겨보세요.</p>
+      </div>
+      <div class="editor">
+        <div class="editor-row">
+          <label>
+            날짜
+            <input type="date" id="entryDate" />
+          </label>
+          <label>
+            감정 온도
+            <div class="mood">
+              <input type="range" min="1" max="5" value="3" id="entryMood" />
+              <span id="moodLabel">보통</span>
+            </div>
+          </label>
+          <label>
+            태그
+            <input type="text" id="entryTags" placeholder="예: 피로, 관계, 쉼" />
+          </label>
+        </div>
+        <div class="editor-row">
+          <label class="full">
+            프롬프트
+            <div class="prompt-row">
+              <select id="entryPrompt"></select>
+              <button class="btn ghost" type="button" id="randomPrompt">랜덤 질문</button>
+            </div>
+          </label>
+        </div>
+        <label class="full">
+          오늘의 이야기
+          <textarea id="entryText" rows="8" placeholder="생각이 흐르는 대로 적어도 괜찮아요."></textarea>
+        </label>
+        <div class="editor-actions">
+          <button class="btn primary" id="saveEntry" type="button">저장하기</button>
+          <button class="btn ghost" id="previewEntry" type="button">새 창 보기</button>
+          <button class="btn ghost" id="clearEntry" type="button">비우기</button>
+          <button class="btn ghost" id="toggleHide" type="button">숨김 모드</button>
+          <button class="btn ghost" id="exportEntries" type="button">백업 내보내기</button>
+          <label class="btn ghost file">
+            가져오기
+            <input type="file" id="importEntries" accept="application/json" />
+          </label>
+        </div>
+        <div class="hint" id="statusHint"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>Quiet Log · 오늘의 기록</div>
+    <div class="footer-links">
+      <a href="about.html">소개</a>
+      <a href="privacy.html">개인정보처리방침</a>
+      <a href="terms.html">이용약관</a>
+      <a href="contact.html">문의</a>
+    </div>
+    <div>이 창에서 저장한 기록은 메인 화면에서 확인할 수 있습니다.</div>
+  </footer>
+
+  <dialog id="entryDialog">
+    <div class="dialog-content">
+      <div class="dialog-head">
+        <div>
+          <h3 id="dialogTitle">기록</h3>
+          <div id="dialogMeta" class="dialog-meta"></div>
+        </div>
+        <button class="btn ghost" id="closeDialog" type="button">닫기</button>
+      </div>
+      <div class="dialog-body" id="dialogBody"></div>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
