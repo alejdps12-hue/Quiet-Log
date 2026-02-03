@@ -227,12 +227,14 @@ main {
   box-shadow: var(--shadow);
   display: grid;
   gap: 18px;
+  overflow: hidden;
 }
 
 .editor-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
+  min-width: 0;
 }
 
 label {
@@ -240,6 +242,7 @@ label {
   gap: 8px;
   font-size: 14px;
   color: var(--muted);
+  min-width: 0;
 }
 
 input[type="text"],
@@ -252,6 +255,8 @@ textarea {
   font-family: inherit;
   font-size: 14px;
   background: #fff;
+  width: 100%;
+  max-width: 100%;
 }
 
 textarea {
@@ -273,11 +278,13 @@ textarea {
   gap: 12px;
   align-items: center;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
 .prompt-row select {
   flex: 1 1 220px;
   min-width: 0;
+  max-width: 100%;
 }
 
 .btn {
