@@ -210,6 +210,8 @@ main {
   padding: 16px;
   border: 1px solid var(--line);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .prompt-card:hover {
@@ -617,5 +619,11 @@ textarea {
 
   .support {
     padding: 24px;
+  }
+}
+
+@media (max-width: 540px) {
+  .prompt-grid {
+    grid-template-columns: 1fr;
   }
 }
